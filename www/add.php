@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . '/models/news.php';
-require __DIR__ . '/function/file.php';
 
 //Контроллер, обрабатывает запрос из формы добавления новости.
 if (!empty($_POST)) {
