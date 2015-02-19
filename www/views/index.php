@@ -15,7 +15,9 @@
             <tr>
                 <td><?php echo $item['date']; ?></td>
                 <td><?php echo $item['title']; ?></td>
-                <td><img src="<?php echo $item['path']; ?>" style="max-width: 200px;"></img></td>
+                <td><?php $home = $item['path'];
+                    $homepage = file_get_contents(__DIR__ . "/../$home");
+                    echo $homepage; ?></td>
             </tr>
         <?php endforeach; ?>
         </tr>
