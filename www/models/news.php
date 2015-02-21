@@ -20,10 +20,15 @@ function News_insert($data)
     SQL_exec($sql);
 }
 
-function News_getAll_Path()
+function News_getOnlyChoosen()
 {
-    $sql = 'SELECT path FROM news ORDER BY date';
-    return SQL_Query($sql);
+    if(isset($_GET['id'])) {
+        $news_id = $_GET['id'];
+        $sql = 'SELECT path FROM news Where id='.$news_id.'';
+        return SQL_Query($sql);
+} else {
+    return false;
+    }
 }
 
 ?>
