@@ -6,7 +6,7 @@ require_once __DIR__ . '/../function/file.php';
 //функция получения всех новостей.
 function News_getAll()
 {
-    $sql = 'SELECT * FROM news ORDER BY date';
+    $sql = 'SELECT * FROM news ORDER BY date DESC';
     return SQL_Query($sql);
 }
 
