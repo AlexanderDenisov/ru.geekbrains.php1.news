@@ -24,7 +24,7 @@ function News_getOnlyChoosen()
 {
     if(isset($_GET['id'])) {
         $news_id = $_GET['id'];
-        $sql = 'SELECT path FROM news Where id='.$news_id.'';
+        $sql = 'SELECT date, title, path FROM news Where id='.$news_id.'';
         return SQL_Query($sql);
 } else {
     return false;
