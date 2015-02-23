@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/models/news.php';
+require __DIR__ . '/function/Article.php';
 
 //Контроллер, обрабатывает запрос из формы добавления новости.
 if (!empty($_POST)) {
@@ -11,7 +12,8 @@ if (!empty($_POST)) {
         $data['date'] = $_POST['date'];
     }
     if (!empty($_FILES)) {
-        $res = File_upload('news');
+        $a = new NewsArticle();
+        $res = $a->File_upload('news');
         if (false !== $res) {
             $data['news'] = $res;
         }
