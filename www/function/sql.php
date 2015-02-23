@@ -1,32 +1,44 @@
 <?php
-
-//функция соединения с БД.
-function SQL_Connect()
+class Database
 {
-    mysql_connect('localhost', 'root', '');
-    mysql_select_db('test');
-}
-
-//функция запроса к БД.
-function SQL_Query($sql)
-{
-    SQL_Connect();
-    //$sql = 'SELECT * FROM news ORDER BY date';
-    $res = mysql_query($sql);
-
-    $ret = [];
-    while (false !== $row = mysql_fetch_assoc($res)) {
-        $ret[] = $row;
+    public function __construct()
+    {
+        mysql_connect('localhost', 'root', '');
+        mysql_select_db('test');
     }
 
-    return $ret;
+    protected function query($sql)
+    {
+        $result = mysql_query($sql);
+        $data = [];
+        while (false !== ($row = mysql_fetch_assoc($result))) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+    protected function exec($sql)
+    {
+        $result = mysql_query($sql);
+        return $result;
+    }
+    public function getAll($table)
+    {
+        $sql = 'SELECT * FROM ' . $table . ' ORDER BY date DESC';
+        return $this->query($sql);
+    }
+    public function onlyChoosen($news_id)
+    {
+        $sql = 'SELECT date, title, path FROM news Where id='.$news_id.'';
+        return $this->query($sql);
+    }
+    public function insert($data)
+    {
+        $sql = "INSERT INTO news
+	(date, title, path)
+	VALUES
+	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['news'] . "')";
+        return $this->exec($sql);
+    }
 }
-
-function SQL_exec($sql)
-{
-    SQL_Connect();
-    mysql_query($sql);
-}
-
 
 ?>
