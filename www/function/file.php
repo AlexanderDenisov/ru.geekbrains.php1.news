@@ -1,7 +1,8 @@
 <?php
 
 //Функция загрузки файлов на сервер.
-function File_upload($field)
+
+/*function File_upload($field)
 {
     if (empty($_FILES))
         return false;
@@ -16,6 +17,6 @@ function File_upload($field)
         }
     }
     return false;
-}
+}*/
 
 ?>
