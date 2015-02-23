@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../function/Database.php';
 require_once __DIR__ . '/../function/file.php';
-//Это модель.
+//Модель.
 //функция получения всех новостей.
 function News_getAll()
 {
@@ -10,6 +10,7 @@ function News_getAll()
     return $db->getAll($sql);
 }
 
+//Функция добавления в БД
 function News_insert($data)
 {
     $db = new Database();
@@ -20,6 +21,7 @@ function News_insert($data)
     return $db->insert($sql);
 }
 
+//Функция получения новости из БД по id
 function News_getOnlyChosen($news_id)
 {
     $db = new Database();
