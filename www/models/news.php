@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../function/sql.php';
+require_once __DIR__ . '/../function/Database.php';
 require_once __DIR__ . '/../function/file.php';
 //Это модель.
 //функция получения всех новостей.
