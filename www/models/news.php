@@ -15,15 +15,10 @@ function News_insert($data)
     return $db->insert($data);
 }
 
-function News_getOnlyChoosen()
+function News_getOnlyChoosen($news_id)
 {
     $db = new Database();
-    if(isset($_GET['id'])) {
-        $news_id = $_GET['id'];
         return $db->onlyChoosen($news_id);
-} else {
-    return false;
-    }
 }
 
 ?>
