@@ -6,19 +6,25 @@ require_once __DIR__ . '/../function/file.php';
 function News_getAll()
 {
     $db = new Database();
-    return $db->getAll('news');
+    $sql = 'SELECT * FROM news ORDER BY date DESC';
+    return $db->getAll($sql);
 }
 
 function News_insert($data)
 {
     $db = new Database();
-    return $db->insert($data);
+    $sql = "INSERT INTO news
+	(date, title, path)
+	VALUES
+	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['news'] . "')";
+    return $db->insert($sql);
 }
 
-function News_getOnlyChoosen($news_id)
+function News_getOnlyChosen($news_id)
 {
     $db = new Database();
-        return $db->onlyChoosen($news_id);
+    $sql = 'SELECT date, title, path FROM news Where id='.$news_id.'';
+    return $db->onlyChosen($sql);
 }
 
 ?>
