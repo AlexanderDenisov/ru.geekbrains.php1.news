@@ -21,7 +21,7 @@
                 <td><?php $home = $item['path'];
                     if (is_readable(__DIR__ . "/../$home")) {
                     $homepage = file_get_contents(__DIR__ . "/../$home", NULL, NULL, 0, 140);
-                    echo $homepage; ?><br><a href="/../fullnews.php/?id=<?php echo $item['id']; ?>">читать новость
+                    echo $homepage; ?><br><a href="/fullnews.php/?id=<?php echo $item['id']; ?>">читать новость
                         полностью >> </a></td>
                 <?php } else {
                     echo 'Файл не доступен для чтения.';
