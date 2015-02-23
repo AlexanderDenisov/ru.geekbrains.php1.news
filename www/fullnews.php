@@ -8,7 +8,7 @@ if(!isset($_GET['id'])) {
     die;
 } else {
     $news_id = $_GET['id'];
-    $full_news = News_getOnlyChoosen($news_id);
+    $full_news = News_getOnlyChosen($news_id);
 }
 
 include __DIR__ . '/views/fullnews.php';
