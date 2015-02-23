@@ -2,30 +2,25 @@
 require_once __DIR__ . '/../function/sql.php';
 require_once __DIR__ . '/../function/file.php';
 //Это модель.
-
 //функция получения всех новостей.
 function News_getAll()
 {
-    $sql = 'SELECT * FROM news ORDER BY date DESC';
-    return SQL_Query($sql);
+    $db = new Database();
+    return $db->getAll('news');
 }
 
 function News_insert($data)
 {
-    $sql = "INSERT INTO news
-	(date, title, path)
-	VALUES
-	('" . $data['date'] . "','" . $data['title'] . "', '" . $data['news'] . "')
-	";
-    SQL_exec($sql);
+    $db = new Database();
+    return $db->insert($data);
 }
 
 function News_getOnlyChoosen()
 {
+    $db = new Database();
     if(isset($_GET['id'])) {
         $news_id = $_GET['id'];
-        $sql = 'SELECT date, title, path FROM news Where id='.$news_id.'';
-        return SQL_Query($sql);
+        return $db->onlyChoosen($news_id);
 } else {
     return false;
     }
